@@ -10,12 +10,12 @@ class Card extends PureComponent {
     }
 
     render() {
-        const {image , title , sortie, description , onclick} = this.props
-        // console.log(onclick);
+        const {image , title , sortie, description , onClick} = this.props
+        console.log(this.props);
         return (
-            <div className="row mt-5 " onClick={onclick}>
+            <div className="row mt-5 ">
                 <div className="col-6">
-                    <div className="card border border-4" style={{width: "18rem"}}>
+                    <div onClick={onClick} className="card border border-4" style={{width: "18rem"}}>
                         <img src={`https://image.tmdb.org/t/p/w300/${image}`} className="card-img-top" alt="..."/>
                         <div className="card-body">
                             <h5 className="card-title">{title}</h5>
