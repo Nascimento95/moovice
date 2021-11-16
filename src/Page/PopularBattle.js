@@ -42,7 +42,7 @@ class PopularBattle extends PureComponent {
         //  condition qui dit si on a parcouru toute la liste de film tu me le dit et tu vide le local storage et tu me remet le state a sa valeur d'origine
         if (this.state.compareMovie === 20){
             console.log("Vous avez parcouru tous les films !")
-            localStorage.clear()
+            // localStorage.clear()
             this.setState({compareMovie: 2})
         }
             
