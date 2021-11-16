@@ -1,25 +1,54 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { PureComponent } from 'react'
+import { BrowserRouter, Switch, Route } from "react-router-dom"
+import Homepage from './Page/Homepage'
+import Weekly from './Page/Weekly'
+import WeeklyBattle from './Page/WeeklyBattle'
+import Popular from './Page/Popular'
+import PopularBattle from './Page/PopularBattle'
+import Favorite from './Page/Favorite'
+import NotFound from './Page/NotFound'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import 'bootstrap/dist/css/bootstrap.min.css'
+import Nav from './Components/nav'
+
+class App extends PureComponent {
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      
+    }
+  }
+  // componentDidMount(){
+  //   fetch("74ff4d5b18f55c304a239fadf716fe2f")
+  //   .then(result => result.json())
+  //   .then(result => console.log(result))
+  // }
+
+  render() {
+    return (
+      <>
+       
+        <BrowserRouter>
+        <Nav />
+        
+
+        {/* Component qui représente la liste des routes */}
+        <Switch>
+
+          {/* Une route au singulier représente un url spécifique */}
+          <Route exact path="/" component={Homepage} />
+          <Route exact path="/weekly" component={Weekly} />
+          <Route path="/weekly-battle" component={WeeklyBattle} />
+          <Route exact path="/popular" component={Popular} />
+          <Route path="/popular-battle" component={PopularBattle} />
+          <Route path="/favorites" component={Favorite} />
+          <Route path="*" component={NotFound} />
+        </Switch>
+      </BrowserRouter>
+      </>
+    )
+  }
 }
 
-export default App;
+export default App
