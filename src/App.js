@@ -34,17 +34,21 @@ class App extends PureComponent {
         
 
         {/* Component qui représente la liste des routes */}
-        <Switch>
+        <div className="container">
+          
+            <Switch>
 
-          {/* Une route au singulier représente un url spécifique */}
-          <Route exact path="/" component={Homepage} />
-          <Route exact path="/weekly" component={Weekly} />
-          <Route path="/weekly-battle" component={WeeklyBattle} />
-          <Route exact path="/popular" component={Popular} />
-          <Route path="/popular-battle" component={PopularBattle} />
-          <Route path="/favorites" component={Favorite} />
-          <Route path="*" component={NotFound} />
-        </Switch>
+              {/* Une route au singulier représente un url spécifique */}
+              <Route exact path="/" component={Homepage} />
+              <Route exact path="/weekly" component={Weekly} />
+              <Route path="/weekly-battle" component={WeeklyBattle} />
+              <Route exact path="/popular" component={Popular} />
+              <Route path="/popular-battle" component={PopularBattle} />
+              <Route path="/favorites" component={Favorite} />
+              <Route path="*" component={NotFound} />
+            </Switch>
+          
+        </div>
       </BrowserRouter>
       </>
     )

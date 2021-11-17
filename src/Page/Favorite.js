@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react'
-// import Card from '../Components/Card'
+import Card from '../Components/Card'
 
 class Favorite extends PureComponent {
     constructor(props) {
@@ -21,8 +21,11 @@ class Favorite extends PureComponent {
     getStorage(){
         const favorite = localStorage.getItem("favorite")
         const array = JSON.parse(favorite)
+        if (!array){
+            array = []
+        }
         return array
-        console.log("dd",array);
+        // console.log("dd",array);
     }
     getMovie(id){
         fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=74ff4d5b18f55c304a239fadf716fe2f`)
@@ -36,29 +39,22 @@ class Favorite extends PureComponent {
         return (
             <>
                 <h1>Favorite</h1>
-                {movies.map( movie =>
-                    // <p> {movie.poster_path} </p>
-                    <div className="row mt-5 ">
-                        <div className="col-6">
-                            <div  className="card border border-4" style={{width: "18rem"}}>
-                                <img src={`https://image.tmdb.org/t/p/w300/${movie.poster_path} `} className="card-img-top" alt="..."/>
-                                <div className="card-body">
-                                    <h5 className="card-title">{movie.original_title}</h5>
-                                    <p className="card-text"> <span className="fw-bold"> description :</span> {movie.overview} </p>
-                                    <p className=""><span className="fw-bold">date de sortie :</span> {movie.release_date}  </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div> 
-                        // original_title , overview ,release_date
-                ) }
+                {movies.map((movie, index)=> 
+                    <Card 
+                    onClick={() => {this.clik(movie.id, index)}}
+                    id = {index}
+                    image ={movie.poster_path} 
+                    title ={movie.original_title}
+                    sortie ={movie.release_date} 
+                    description = {movie.overview}
+                    />   
+                )}
+            </>  
+        ) 
 
-                {/* <Card  
-                onClick={this.getStorage} 
                 
-                /> */}
-            </>
-        )
+           
+        
     }
 }
 
